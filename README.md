@@ -18,4 +18,11 @@ samples, guidance on mobile development, and a full API reference.
 ## Calculator Apps
 
 Simple Calculator App built in Flutter
+
 ![calculator](./calculator.png "Screenshot")
+
+## Step to set up this project
+
+1. Make sure you already install Flutter [Here](https://flutter.dev/docs/get-started/install)
+2. Download or clone this repository
+3. You can run either in website or your mobile

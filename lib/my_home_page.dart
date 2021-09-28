@@ -10,18 +10,18 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String result = "0";
-
   String _result = "0";
   double num1 = 0.0;
   double num2 = 0.0;
   String operand = "";
+  String temp = "";
 
   Column keyPadFun() {
     List col = [
       ['7', '8', '9', 'X'],
       ['4', '5', '6', '-'],
       ['1', '2', '3', '+'],
-      ['C', '0', '<', '=']
+      ['C', '0', '.', '=']
     ];
     return Column(
       children: List.generate(
@@ -62,6 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
       num1 = 0.0;
       num2 = 0.0;
       operand = "";
+      temp = "";
 
     } else if (button == "+" || button == "-" || button == "/" || button == "X"){
 
@@ -70,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
       operand = button;
 
       _result = "0";
-
+      temp = num1.toString()+operand;
     } else if(button == "."){
 
       if(_result.contains(".")){
@@ -97,9 +98,6 @@ class _MyHomePageState extends State<MyHomePage> {
       if(operand == "/"){
         _result = (num1 / num2).toString();
       }
-      if(operand == "%"){
-        _result = (num1 % num2).toString();
-      }
 
       num1 = 0.0;
       num2 = 0.0;
@@ -108,14 +106,14 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
 
       _result = _result + button;
-
+      temp = temp + button;
     }
 
     print(_result);
 
     setState(() {
 
-      result = double.parse(_result).toStringAsFixed(2);
+      result = double.parse(_result).toString();
 
     });
   }
@@ -143,6 +141,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 40,
+                      ),
+                    ),
+                    Text(temp,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
                       ),
                     ),
                   ],
